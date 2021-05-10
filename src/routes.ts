@@ -1,6 +1,9 @@
 import {request, response, Router} from 'express';
+import { ActivityController } from './controller/ActivityController';
+import { CourseUnitController } from './controller/CourseUnitController';
 import {UserController} from './controller/UserController';
-
+import {AuthenticateController} from './controller/AuthenticateController';
+import authenticated from './middlewares/authenticated'
 
 interface UserRequest {
     name:string;
@@ -9,11 +12,15 @@ interface UserRequest {
 }
 
 const userController = new UserController()
+const activityController = new ActivityController()
+const courseunitController = new CourseUnitController()
+const authenticateController = new AuthenticateController()
 
 const routes = Router();
 
-routes.post('/user', () => userController.create);
-routes.post('/activity', () => console.log('Activity route'));
-routes.post('/courseunit', () => console.log('Course Unit route'));
+routes.post('/user', userController.create);
+routes.post('./auth', authenticateController.create);
+routes.post('/activity',authenticated, activityController.create);
+routes.post('/courseunit', authenticated,courseunitController.create);
 
 export default routes;
