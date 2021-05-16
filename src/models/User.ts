@@ -10,15 +10,19 @@ class User {
         }
     }
     @PrimaryColumn()
-    readonly id:string
+    readonly id:string;
+
     @Column()
     name: string;
+    
     @Column()
     email: string;
+    
     @Column()
     password: string;
+    
     @CreateDateColumn()
-    create_at:Date;
+    created_at: Date;
 }
 
 export {User}

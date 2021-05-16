@@ -22,7 +22,7 @@ export default function authenticated(request:Request, reponse:Response, next:Ne
 
     const {sub, role} = verifyToken as Token
 
-    request.body = {
+    request.body.user = {
         id: sub,
         role: role
     }

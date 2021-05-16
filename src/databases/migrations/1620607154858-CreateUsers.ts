@@ -9,7 +9,8 @@ export class CreateUsers1620607154858 implements MigrationInterface {
                     columns:[
                         {name:"id",type:"varchar",isPrimary: true},
                         {name:"name",type:"varchar"},
-                        {name:"description",type:"varchar"},
+                        {name:"email",type:"varchar"},
+                        {name:"password",type:"varchar"},                        
                         {name:"created_at",type:"timestamp",default:"now()"}
                     ]
                 })
