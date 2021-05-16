@@ -1,7 +1,7 @@
 import { getRepository } from "typeorm";
 import { CourseUnit } from "../models/CourseUnit";
 
-type CourseUnitData = {
+interface CourseUnitData {
     name:string;
     description:string;
 }
@@ -15,7 +15,7 @@ class CreateCourseUnitService {
             name,description
         });
 
-        await await courseUnitsRepository.save(courseUnit)
+        await courseUnitsRepository.save(courseUnit)
         return courseUnit;
     }
 }

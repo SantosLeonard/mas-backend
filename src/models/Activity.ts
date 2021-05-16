@@ -12,18 +12,21 @@ class Activity {
     
     @PrimaryColumn()
     readonly id:string;
+    
     @ManyToOne(()=> CourseUnit, course_unit => course_unit.activities)
     course_unit: CourseUnit
 
     @Column()
     name: string;
-    @Column()
+    
     @CreateDateColumn()
     activity_date: Date;
+    
     @Column()
     course_unit_id: string;
+    
     @CreateDateColumn()
-    create_at: Date;
+    created_at: Date;
 
 }
 

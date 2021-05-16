@@ -2,7 +2,7 @@ import { getRepository } from "typeorm";
 import { User } from "../models/User";
 import {hash} from 'bcryptjs';
 
-type UserData = {
+interface UserData {
     name:string;
     email:string;
     password:string;
@@ -19,11 +19,11 @@ class CreateUserService {
         }
 
         const hashedPassword = await hash(password, 8);
-        const user = {
+        const user = usersRepository.create({
             name, email, password:hashedPassword
-        }
+        });
 
-        await await usersRepository.save(user)
+        await usersRepository.save(user)
         return user;
     }
 }

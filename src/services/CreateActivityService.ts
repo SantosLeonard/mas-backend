@@ -1,7 +1,7 @@
 import { getRepository } from "typeorm";
 import { Activity } from "../models/Activity";
 
-type ActivityData = {
+interface ActivityData {
     name:string;
     activity_date:string;
     course_unit_id:string;
@@ -16,7 +16,7 @@ class CreateActivityService {
             name, activity_date, course_unit_id
         });
 
-        await await activitiesRepository.save(activity)
+        await activitiesRepository.save(activity);
         return activity;
     }
 }
